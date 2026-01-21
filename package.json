@@ -1,0 +1,31 @@
+{
+  "name": "dolar-acurast-ve-webhook",
+  "version": "1.0.0",
+  "description": "Microservidor para recibir webhooks de Acurast con el precio del dólar VES",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test:acurast": "node acurast/test-local.js"
+  },
+  "keywords": [
+    "webhook",
+    "acurast",
+    "dolar",
+    "ves",
+    "nodejs",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
