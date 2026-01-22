@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DolarAcurastVE - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <nav class="bg-white shadow-sm mb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">DolarAcurastVE</h1>
+            <div class="text-sm text-gray-500" id="last-update-time">Actualizando...</div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Tarjeta de Precio Destacada -->
+        <div class="mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-8 border-blue-500 flex flex-col md:flex-row md:items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-medium text-gray-500 uppercase tracking-wider">Último Precio Oficial</h2>
+                    <div class="flex items-baseline mt-1">
+                        <span class="text-5xl font-extrabold text-gray-900" id="main-price">--.--</span>
+                        <span class="ml-2 text-2xl font-semibold text-gray-500">VES</span>
+                    </div>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <p class="text-sm text-gray-400" id="main-price-date">Fecha API: --/--/----</p>
+                    <p class="text-xs font-mono text-blue-400 mt-1" id="main-price-job">Job ID: --</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros y Controles -->
+        <div class="bg-white rounded-lg shadow-sm p-4 mb-6 flex flex-wrap items-center gap-4">
+            <div class="flex items-center gap-2">
+                <label for="job-filter" class="text-sm font-medium text-gray-700">Filtrar por Job:</label>
+                <select id="job-filter" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm p-2 bg-gray-50">
+                    <option value="">Todos los Jobs</option>
+                </select>
+            </div>
+            <button id="refresh-btn" class="ml-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                Refrescar Ahora
+            </button>
+        </div>
+
+        <!-- Tabla de Datos -->
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha API</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio (VES)</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job ID</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recibido</th>
+                        </tr>
+                    </thead>
+                    <tbody id="prices-table-body" class="bg-white divide-y divide-gray-200">
+                        <!-- Filas cargadas dinámicamente -->
+                        <tr>
+                            <td colspan="4" class="px-6 py-10 text-center text-gray-400">Cargando datos históricos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Paginación -->
+            <div class="bg-gray-50 px-6 py-4 flex items-center justify-between border-t border-gray-200">
+                <div class="text-sm text-gray-700">
+                    Mostrando <span id="current-range">0-0</span> de <span id="total-results">0</span> resultados
+                </div>
+                <div class="flex gap-2">
+                    <button id="prev-page" class="px-3 py-1 border rounded bg-white text-gray-600 disabled:opacity-50">Anterior</button>
+                    <button id="next-page" class="px-3 py-1 border rounded bg-white text-gray-600 disabled:opacity-50">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center text-gray-400 text-sm">
+        &copy; 2026 DolarAcurastVE - Monitoreo Descentralizado
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
