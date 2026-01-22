@@ -15,7 +15,7 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') });
 global._STD_ = {
   env: {
     CALLBACK_URL: process.env.CALLBACK_URL,
-    JOB_ID: "local-test-job"
+    JOB_ID: process.env.JOB_ID || "local-test-job"
   }
 };
 
